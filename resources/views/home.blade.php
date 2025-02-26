@@ -7,14 +7,15 @@
           <p class="mt-6 text-lg text-gray-600">
             A fast, reliable, and intuitive POS system to manage transactions, track inventory, and grow your business effortlessly.
           </p>
+          <p class="mt-6 text-sm text-gray-800">By Abdullah Shamil Basayev.</p>
           <div class="mt-8 flex justify-center md:justify-start gap-4">
-            <button class="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition">
+            <button class="px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition">
               Get Started
             </button>
           </div>
         </div>
 
-        <div class="mt-12 md:mt-0">
+        <div class="hidden md:block mt-12 md:mt-0">
           <img
             src={{ asset('images/cashier.jpg') }}
             alt="POS System"

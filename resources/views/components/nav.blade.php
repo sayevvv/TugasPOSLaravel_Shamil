@@ -1,4 +1,4 @@
-<nav class="bg-white">
+<nav class="bg-white border-b border-blue-300">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-center">
         <!-- Mobile menu button -->
@@ -11,13 +11,12 @@
           </svg>
         </button>
 
-
         <!-- Centered Links -->
         <div class="hidden sm:block">
           <div class="flex space-x-4 justify-center">
-            <a href="#" class="rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white">Home</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-blue-600 hover:bg-blue-100 hover:text-blue-800">Products</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-blue-600 hover:bg-blue-100 hover:text-blue-800">Profile</a>
+            <a href="/home" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('home') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Home</a>
+            <a href="/products" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('products') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Products</a>
+            <a href="/profile" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('profile') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Profile</a>
           </div>
         </div>
       </div>
@@ -26,21 +25,9 @@
     <!-- Mobile Menu -->
     <div class="hidden sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3">
-        <a href="#" class="block rounded-md bg-blue-600 px-3 py-2 text-base font-medium text-white">Home</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-100 hover:text-blue-800">Products</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-blue-600 hover:bg-blue-100 hover:text-blue-800">Profile</a>
+        <a href="/home" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('home') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Home</a>
+        <a href="/products" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('products') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Products</a>
+        <a href="/profile" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('profile') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Profile</a>
       </div>
     </div>
   </nav>
-
-  <script>
-    document.getElementById('menu-button').addEventListener('click', function () {
-      const menu = document.getElementById('mobile-menu');
-      const menuIcon = document.getElementById('menu-icon');
-      const closeIcon = document.getElementById('close-icon');
-
-      menu.classList.toggle('hidden');
-      menuIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-    });
-  </script>

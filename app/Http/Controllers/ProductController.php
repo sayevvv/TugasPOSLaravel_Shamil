@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Product::with('category')->get());
     }
 
     /**
@@ -27,7 +28,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'price' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0'
+        ]);
+
+        $product = Product::create($request->all());
+        return response()->json($product, 201);
     }
 
     /**
@@ -35,7 +44,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return response()->json($product->load('category'));
     }
 
     /**
@@ -51,7 +60,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'sometimes|required|max:255',
+            'category_id' => 'sometimes|required|exists:categories,id',
+            'price' => 'sometimes|required|numeric|min:0',
+            'stock' => 'sometimes|required|integer|min:0'
+        ]);
+
+        $product->update($request->all());
+        return response()->json($product);
     }
 
     /**
@@ -59,6 +76,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product->delete();
+        return response()->json(null, 204);
     }
 }

@@ -10,9 +10,6 @@
 <body>
     <x-nav></x-nav>
     <section class="flex flex-col h-screen bg-white m-0 mt-3">
-        <div>
-
-        </div>
         <main>
             {{ $slot }}
         </main>
