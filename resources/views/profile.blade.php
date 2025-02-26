@@ -1,3 +1,3 @@
 <x-layout>
-    Halaman Profile
+    Halaman Profile, nama saya {{ $name }}.
 </x-layout>

@@ -23,6 +23,25 @@ Route::get('/products', function () {
     return view('products');
 })->name('products');
 
-Route::get('/profile', function () {
-    return view('sales');
-})->name('products');
+// Route::get('/profile', function () {
+//     return view('sales');
+// });
+
+Route::prefix('categories')->group(function () {
+    Route::get('/food-beverage', function () {
+        return ['category' => 'food-beverage'];
+    })->name('categories.food-beverage');
+    Route::get('/beauty-health', function () {
+        return view('categories.edit');
+    });
+    Route::get('/home-care', function () {
+        return view('categories.delete');
+    });
+    Route::get('/baby-kid', function () {
+        return view('categories.delete');
+    });
+});
+
+Route::get('/user/{id}/name/{name}', function ($id, $name) {
+    return view('profile', ['id' => $id, 'name' => $name]);
+})->name('profile');

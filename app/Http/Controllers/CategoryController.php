@@ -40,7 +40,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return response()->json($category);
+        return response()->json([
+        'category' => $category->name,
+        'products' => $category->products // Fetch associated products
+    ]);
     }
 
     /**
@@ -70,5 +73,9 @@ class CategoryController extends Controller
     {
         $category->delete();
         return response()->json(null, 204);
+    }
+    public function foodBeverage()
+    {
+        return response()->json(Category::where('name', 'Food & Beverage')->first());
     }
 }
