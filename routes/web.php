@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,26 +23,22 @@ Route::get('/home', function () {
 });
 Route::get('/products', function () {
     return view('products');
-})->name('products');
-
-// Route::get('/profile', function () {
-//     return view('sales');
-// });
-
-Route::prefix('categories')->group(function () {
-    Route::get('/food-beverage', function () {
-        return ['category' => 'food-beverage'];
-    })->name('categories.food-beverage');
-    Route::get('/beauty-health', function () {
-        return view('categories.edit');
-    });
-    Route::get('/home-care', function () {
-        return view('categories.delete');
-    });
-    Route::get('/baby-kid', function () {
-        return view('categories.delete');
-    });
 });
+
+// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+// Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+// ROUTE PREFIX
+Route::prefix('categories')->group(function(){
+    Route::get('/food-beverage', [CategoryController::class, 'foodBeverage'])->name('categories.food-beverage');
+    Route::get('/beauty-health', [CategoryController::class, 'beautyHealth'])->name('categories.beauty-health');
+    Route::get('/home-care', [CategoryController::class, 'homeCare'])->name('categories.home-care');
+    Route::get('/baby-kid', [CategoryController::class, 'babyKid'])->name('categories.baby-kid');
+});
+
+Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
 
 Route::get('/user/{id}/name/{name}', function ($id, $name) {
     return view('profile', ['id' => $id, 'name' => $name]);

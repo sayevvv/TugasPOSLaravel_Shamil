@@ -15,7 +15,8 @@
         <div class="hidden sm:block">
           <div class="flex space-x-4 justify-center">
             <a href="/home" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('home') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Home</a>
-            <a href="/products" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('products') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Products</a>
+            <a href="/categories" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('products') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Products</a>
+            <a href="/sales" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('sales') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Sales</a>
             <a href="{{ route('profile', ['id' => 1, 'name' => 'JohnDoe']) }}" class="rounded-md px-3 py-2 text-sm font-medium {{ Request::is('profile') ? 'text-lg text-blue-700' : 'text-blue-600 hover:text-blue-500' }}">Profile</a>
           </div>
         </div>
@@ -26,6 +27,7 @@
     <div class="hidden sm:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3">
         <a href="/home" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('home') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Home</a>
+        <a href="/products" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('products') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Products</a>
         <a href="/products" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('products') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Products</a>
         <a href="/profile" class="block rounded-md px-3 py-2 text-base font-medium {{ Request::is('profile') ? 'bg-blue-600 text-white' : 'text-blue-600 hover:bg-blue-100 hover:text-blue-800' }}">Profile</a>
       </div>

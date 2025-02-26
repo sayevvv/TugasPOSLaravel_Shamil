@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response()->json(Category::all());
+        $categories = Category::all();
+        return view('products', compact('categories'));
     }
 
     /**
@@ -40,10 +41,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return response()->json([
-        'category' => $category->name,
-        'products' => $category->products // Fetch associated products
-    ]);
+        $products = $category->products;
+        return view('product', compact('category', 'products'));
     }
 
     /**
@@ -76,6 +75,29 @@ class CategoryController extends Controller
     }
     public function foodBeverage()
     {
-        return response()->json(Category::where('name', 'Food & Beverage')->first());
+        $category = Category::where('name', 'Food-Beverage')->firstOrFail();
+        $products = $category->products;
+        return view('product', compact('category', 'products'));
+    }
+
+    public function beautyHealth()
+    {
+        $category = Category::where('name', 'Beauty-Health')->firstOrFail();
+        $products = $category->products;
+        return view('product', compact('category', 'products'));
+    }
+
+    public function homeCare()
+    {
+        $category = Category::where('name', 'Home-Care')->firstOrFail();
+        $products = $category->products;
+        return view('product', compact('category', 'products'));
+    }
+
+    public function babyKid()
+    {
+        $category = Category::where('name', 'Baby-Kid')->firstOrFail();
+        $products = $category->products;
+        return view('product', compact('category', 'products'));
     }
 }

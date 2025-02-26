@@ -1,26 +1,14 @@
 <x-layout>
-    <div class="flex flex-col items-center justify-center gap-4 p-6">
-        <section class="text-center">
-            <h1 class="text-3xl font-bold text-blue-600">Products</h1>
-            <p>Your Product Sales</p>
-        </section>
+    <div class="container mx-auto p-6">
+        <h2 class="mb-4 text-2xl font-bold text-gray-800 text-center">Product Categories</h2>
 
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            @php
-                $categories = [
-                    ['name' => 'Food & Beverage', 'sales' => 1200],
-                    ['name' => 'Beauty & Health', 'sales' => 950],
-                    ['name' => 'Home Care', 'sales' => 700],
-                    ['name' => 'Baby & Kid', 'sales' => 850],
-                ];
-            @endphp
-
-            @foreach ($categories as $category)
-                <div class="p-8 bg-white shadow-lg rounded-xl flex flex-col items-center text-center transition transform hover:scale-105 hover:shadow-2xl">
-                    <h2 class="text-lg font-semibold">{{ $category['name'] }}</h2>
-                    <p class="text-gray-500">Sales: {{ number_format($category['sales']) }}</p>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+            @foreach($categories as $category)
+                <section class="p-4 border border-gray-300 shadow-md rounded-lg bg-white text-center hover:scale-105 transition">
+                    <h5 class="text-lg mb-3 font-semibold text-gray-700">{{ $category['name'] }}</h5>
+                    <a href="{{ route('categories.' . $category['slug']) }}" class="px-4 py-2 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">View Products</a>
+                </section>
             @endforeach
-        </section>
+        </div>
     </div>
 </x-layout>
