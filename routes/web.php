@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,6 @@ Route::get('/products', function () {
     return view('products');
 });
 
-// Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-// Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 
 // ROUTE PREFIX
@@ -40,6 +38,6 @@ Route::prefix('categories')->group(function(){
 
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
 
-Route::get('/user/{id}/name/{name}', function ($id, $name) {
-    return view('profile', ['id' => $id, 'name' => $name]);
-})->name('profile');
+// ROUTE PARAM
+Route::get('/user/{id}/name/{name}', [UserController::class, 'showProfile'])->name('profile');
+

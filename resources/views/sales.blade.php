@@ -16,7 +16,6 @@
                     <table class="min-w-full border border-gray-300">
                         <thead class="bg-gray-100">
                             <tr>
-                                <th class="p-2 border">#</th>
                                 <th class="p-2 border">Sale ID</th>
                                 <th class="p-2 border">Product</th>
                                 <th class="p-2 border">Quantity</th>
@@ -28,7 +27,6 @@
                             @foreach($sales as $sale)
                                 @foreach($sale->items as $item)
                                     <tr class="border-b">
-                                        <td class="p-2 border">{{ $loop->parent->iteration }}</td>
                                         <td class="p-2 border">{{ $sale->id }}</td>
                                         <td class="p-2 border">{{ $item->product->name }}</td>
                                         <td class="p-2 border">{{ $item->quantity }}</td>

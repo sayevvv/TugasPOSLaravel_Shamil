@@ -40,5 +40,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+        
+        $this->call(SalesSeeder::class);
     }
 }
